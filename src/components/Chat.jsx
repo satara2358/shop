@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Chat() {
+function Chat () {
   return (
-    <div>Chat</div>
+    <div>Esto es una demo de Chat</div>
   )
 }
 
