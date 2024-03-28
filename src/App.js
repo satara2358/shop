@@ -92,7 +92,6 @@ export const App = () => {
             </div>
           </div>
         </div>
-
       </BrowserRouter>
     </div>
   )

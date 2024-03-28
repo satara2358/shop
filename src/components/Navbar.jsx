@@ -59,7 +59,11 @@ function Navbar () {
             !prevActiveMenu
           )}
         color='gray'
-        icon={<AiOutlineMenu />}
+        icon={
+          <div style={{ fontsize: '18px' }}>
+            <AiOutlineMenu />
+          </div>
+        }
       />
       <div className='flex'>
         <NavButton
