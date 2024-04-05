@@ -5,8 +5,7 @@ import { FiSettings } from 'react-icons/fi'
 // eslint-disable-next-line no-unused-vars
 import { Tooltip, TooltipComponent } from '@syncfusion/ej2-react-popups'
 
-// eslint-disable-next-line no-unused-vars
-import { Navbar, Footer, Sidebar, ThemeSettings } from './components'
+import { Navbar, Sidebar, ThemeSettings } from './components'
 import {
   Ecommerce,
   Orders,
@@ -29,7 +28,7 @@ import './App.css'
 import { useStateContext } from './contexts/ContextProvider'
 
 export const App = () => {
-  const { activeMenu } = useStateContext()
+  const { activeMenu, themeSettings, setThemeSettings } = useStateContext()
   return (
     <div>
       <BrowserRouter>
@@ -39,7 +38,7 @@ export const App = () => {
               <button
                 type='button'
                 className='text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray  text-white'
-                b
+                onClick={() => setThemeSettings(true)}
                 style={{ background: '#333', borderRadius: '50%' }}
               >
                 <FiSettings />
@@ -58,14 +57,14 @@ export const App = () => {
               </div>
               )}
           <div
-            className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'md:ml-72' : 'flex-2'
-            }`}
+            className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'md:ml-72' : 'flex-2'}`}
           >
             <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
               <Navbar />
             </div>
             {/* ------------------------ */}
             <div>
+              {themeSettings && <ThemeSettings />}
               <Routes>
                 {/* dashBoard */}
                 <Route path='/' element={<Ecommerce />} />
