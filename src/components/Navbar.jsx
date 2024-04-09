@@ -58,7 +58,7 @@ function Navbar () {
           setActiveMenu((prevActiveMenu) =>
             !prevActiveMenu
           )}
-        color='gray'
+        color={currentColor}
         icon={
           <div style={{ fontsize: '18px' }}>
             <AiOutlineMenu />
@@ -69,21 +69,21 @@ function Navbar () {
         <NavButton
           title='Cart'
           customFunc={() => handleClick('cart')}
-          color='gray'
+          color={currentColor}
           icon={<FiShoppingCart />}
         />
         <NavButton
           title='Chat'
           dotColor='#03C1D7'
           customFunc={() => handleClick('chat')}
-          color='gray'
+          color={currentColor}
           icon={<BsChatLeft />}
         />
         <NavButton
           title='Notification'
           dotColor='#03C1D7'
           customFunc={() => handleClick('notification')}
-          color='gray'
+          color={currentColor}
           icon={<RiNotification3Line />}
         />
         <TooltipComponent
@@ -104,7 +104,8 @@ function Navbar () {
           >
             <img
               className='rounded-full w-8 h-8'
-              src={avatar} alt='imagen de perfil de usuario'
+              src={avatar}
+              alt='imagen de perfil de usuario'
             />
             <p>
               <span className='text-gray-400 text-14'>Hola, </span> {' '}

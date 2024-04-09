@@ -7,7 +7,7 @@ import { useStateContext } from '../contexts/ContextProvider'
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 
 function ThemeSettings () {
-  const { setThemeSettings } = useStateContext()
+  const { setThemeSettings, setMode, setColor, currentColor, currentMode } = useStateContext()
   return (
     <div className='bg-half-transparent w-screen fixed nav-item top-0 right-0'>
       <div className='float-right h-screen dark:text-gray-200 bg-white dark:[#484B52] w-400'>
@@ -16,7 +16,7 @@ function ThemeSettings () {
           <button
             type='button'
             onClick={() => setThemeSettings(false)}
-            style={{ color: 'rbg(153, 171, 180)', borderRadius: '50%' }}
+            style={{ color: 'rgb(153, 171, 180)', borderRadius: '50%' }}
             className='text-2xl p-3 hover:drop-shadow-xl hover:bg-light-gray'
           >
             <MdOutlineCancel />
@@ -31,8 +31,8 @@ function ThemeSettings () {
               name='theme'
               value='Light'
               className='cursor-pointer'
-              onChange={() => {}}
-              checked
+              onChange={setMode}
+              checked={currentMode === 'Light'}
             />
             <label
               htmlFor='light'
@@ -41,15 +41,15 @@ function ThemeSettings () {
               Light
             </label>
           </div>
-          <div className='mt-4'>
+          <div className='mt-2'>
             <input
               type='radio'
               id='dark'
               name='theme'
               value='Dark'
               className='cursor-pointer'
-              onChange={() => {}}
-              checked
+              onChange={setMode}
+              checked={currentMode === 'Dark'}
             />
             <label
               htmlFor='dark'
@@ -59,7 +59,7 @@ function ThemeSettings () {
             </label>
           </div>
         </div>
-        <div className='border-t-1 border-color p-4 ml-4'>
+        <div className='p-4 border-t-1 border-color ml-4'>
           <p className='font-semibold text-xl'>Colores Temas</p>
           <div className='flex gap-3'>
             {themeColors.map((item, index) => (
@@ -68,15 +68,19 @@ function ThemeSettings () {
                 content={item.name}
                 position='TopCenter'
               >
-                <div className='relative mt-2 cursor-pointer flex gap-5 items-center'>
+                <div
+                  className='relative mt-2 cursor-pointer flex gap-5 items-center'
+                  key={item.name}
+                >
                   <button
                     type='button'
                     className='h-10 w-10 rounded-full cursor-pointer'
                     style={{ backgroundColor: item.color }}
+                    onClick={() => setColor(item.color)}
                   >
                     <BsCheck
                       // eslint-disable-next-line no-constant-condition
-                      className={`ml-2 text-2xl text-white ${false ? 'block' : 'hidden'}`}
+                      className={`ml-2 text-2xl text-white ${item.color === currentColor ? 'block' : 'hidden'}`}
                     />
                   </button>
                 </div>

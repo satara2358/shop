@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { createContext, useContext, useState } from 'react'
 
 const StateContext = createContext()
@@ -18,16 +17,18 @@ export const ContextProvider = ({ children }) => {
   const [currentMode, setCurrentMode] = useState('Light')
   const [themeSettings, setThemeSettings] = useState(false)
 
-  const sedMode = (e) => {
+  const setMode = (e) => {
     setCurrentMode(e.target.value)
 
     localStorage.setItem('themeMode', e.target.value)
+    setThemeSettings(false)
   }
 
-  const sedColor = (e) => {
-    setCurrentColor(e.target.value)
+  const setColor = (color) => {
+    setCurrentColor(color)
 
-    localStorage.setItem('colorMode', e.target.value)
+    localStorage.setItem('colorMode', color)
+    setThemeSettings(false)
   }
 
   const handleClick = (clicked) => {
@@ -45,10 +46,10 @@ export const ContextProvider = ({ children }) => {
         setScreenSize,
         currentColor,
         currentMode,
-        setCurrentColor,
-        setCurrentMode,
         themeSettings,
-        setThemeSettings
+        setThemeSettings,
+        setMode,
+        setColor
       }}
     >
       {children}
