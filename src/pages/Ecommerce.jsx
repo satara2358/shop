@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { BsCurrentDolar } from 'react-icons/bs'
+import { BsCurrencyDollar } from 'react-icons/bs'
 import { VscPrimitiveSquare } from 'react-icons/vsc'
 import { Stacked, Pie, Button, SparkLine } from '../components'
 import { earningData, SparklineAreaData, ecomPieChartDat } from '../data/dummy'
@@ -9,7 +9,7 @@ import { useStateContext } from '../contexts/ContextProvider'
 function Ecommerce () {
   const { currentColor } = useStateContext()
   return (
-    <div className='mt-12'>
+    <div className='mt-24'>
       <div className='flex flex-wrap lg:flex-nowrap justify-center'>
         <div className='bg-white data:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center'>
           <div className='flex justify-between items-center'>
@@ -18,6 +18,13 @@ function Ecommerce () {
               <p className='text-2xl'>$58.909.786</p>
               <earningData />
             </div>
+            <button
+              type='button'
+              style={{ backgroundColor: currentColor }}
+              className='text-2xl opacity-0.9 text-white hover:drop-shadow-xl rounded-full p-4'
+            >
+              <BsCurrencyDollar />
+            </button>
           </div>
           <div>
             <Button
